@@ -15,13 +15,15 @@ public  @Data  class ProductBank {
 	private String id;
 	private String description;
 	private TypeProductBank typeProductBank;
-	
-	
-	public ProductBank(String description, TypeProductBank typeProductBank) {
+	private int codigo;
+	public ProductBank(String description, TypeProductBank typeProductBank, int codigo) {
 		super();
 		this.description = description;
 		this.typeProductBank = typeProductBank;
+		this.codigo = codigo;
 	}
+	
+	
 	
 	
 }

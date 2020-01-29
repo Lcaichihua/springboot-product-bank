@@ -14,10 +14,14 @@ public @Data class TypeProductBank {
 	@Id
 	private String id;
 	private String description;
+	
 	public TypeProductBank(String description) {
-		
+		super();
 		this.description = description;
+	
 	}
+	
+	
 
 	
 	
