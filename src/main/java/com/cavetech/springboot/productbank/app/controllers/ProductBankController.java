@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cavetech.springboot.productbank.app.domain.ProductBank;
 import com.cavetech.springboot.productbank.app.service.ProductBankService;
 
+import io.swagger.annotations.ApiOperation;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -25,12 +26,13 @@ public class ProductBankController {
 	private  ProductBankService prodbankservice;
 
 	@GetMapping("/list")
+	@ApiOperation(value = "List ProductBank", notes="all productbank")
 	public Flux<ProductBank> findAll() {
 		return prodbankservice.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public Mono<ProductBank> finById(@PathVariable String id) {
+	public Mono<ProductBank> finById(@PathVariable String id){
 		return prodbankservice.findById(id);
 	}
 
@@ -44,8 +46,9 @@ public class ProductBankController {
 		return prodbankservice.save(prodbank);
 	}
 
+	
 	@DeleteMapping("/{id}")
-	public Mono<Void> eliminarProducto(@PathVariable String id){
+	public Mono<Void> eliminarProducto(@PathVariable String id) {
 		return prodbankservice.deletexId(id);
 	}
 
