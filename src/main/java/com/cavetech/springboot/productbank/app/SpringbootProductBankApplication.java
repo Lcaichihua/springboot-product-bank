@@ -38,22 +38,20 @@ public class SpringbootProductBankApplication implements CommandLineRunner  {
 		template.dropCollection(ProductBank.class).subscribe();
 		template.dropCollection(TypeProductBank.class).subscribe();
 	
-		
-		
-		
 		TypeProductBank type1 = new TypeProductBank();
 		type1.setDescription("Cuenta Bancaria");
-			
-		
-		
-		
+				
 		Flux.just(type1)
 		.flatMap(tipP -> typeprodbank.save(tipP))
 		.thenMany(	
 				Flux.just(new ProductBank("Cuenta de ahorro" ,  type1,1),
-						  new ProductBank("Cuentas corrienteas" ,  type1,2),
-						  new ProductBank("Cuentas a plazo fijo" ,  type1,3)
-				
+						  new ProductBank("Cuentas corriente" ,  type1,2),
+						  new ProductBank("Cuentas a plazo fijo " ,  type1,3),
+						  new ProductBank("Cuenta de ahorro Personal Vip " ,  type1,4),
+						  new ProductBank("Cuenta Corriente Personal Vip " ,  type1,5),
+						  new ProductBank("Cuenta corriente Empresarial PYME" ,  type1,6),
+						  new ProductBank("Cuenta corriente empresarial Corporative" ,  type1,7),						  
+						  new ProductBank("Cuentas a plazo fijo VIP" ,  type1,8)
 					)	
 				).flatMap(pro -> productbank.save(pro))
 		.subscribe(res -> System.out.println("Producto".concat(res.toString().concat(" " + "Registrado"))));
